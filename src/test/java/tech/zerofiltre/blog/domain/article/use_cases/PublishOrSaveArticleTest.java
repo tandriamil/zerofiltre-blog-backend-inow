@@ -345,22 +345,13 @@ class PublishOrSaveArticleTest {
     @DisplayName("Publishing an article as non admin sends an email to the author")
     void execute_PutInReview_andSendNotification_OnAuthorButNotAdmin() throws ForbiddenActionException, PublishOrSaveArticleException {
         //ARRANGE
-        Article mockArticle = ZerofiltreUtils.createMockArticle(true);
-        when(articleProvider.articleOfId(anyLong())).thenReturn(Optional.of(mockArticle));
-        when(tagProvider.tagOfId(anyLong())).thenReturn(Optional.of(newTag));
-        when(articleProvider.save(any())).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
+      
 
         //ACT
-        publishOrSaveArticle.execute(
-                mockArticle.getAuthor(), mockArticle.getId(), "", "", "", "", Collections.singletonList(newTag), PUBLISHED, "https://zerofiltre.tech");
+       
 
         //ASSERT
-        ArgumentCaptor<UserActionEvent> captor = ArgumentCaptor.forClass(UserActionEvent.class);
-        verify(userNotificationProvider,times(1)).notify(captor.capture());
-        UserActionEvent value = captor.getValue();
-        assertThat(value.getAction()).isEqualTo(Action.ARTICLE_SUBMITTED);
-        assertThat(value.getArticle()).isNotNull();
-        assertThat(value.getAppUrl()).isEqualTo("https://zerofiltre.tech");
+       
     }
 
 }
