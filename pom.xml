@@ -11,7 +11,7 @@
     </parent>
     <groupId>tech.zerofiltre</groupId>
     <artifactId>blog</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>Zerofiltre blog</name>
     <description>Zerofiltre blog backend</description>
     <licenses>
