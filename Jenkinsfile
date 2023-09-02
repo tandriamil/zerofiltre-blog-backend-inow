@@ -62,16 +62,15 @@ pipeline {
                 emailext(
                     subject: "Build Successful: ${currentBuild.fullDisplayName}",
                     body: "The build has completed successfully. Check the artifacts here: ${env.BUILD_URL}",
-                    to: getAuthorEmail(),
+                    to: "philippechampion58@gmail.com",
                 )
             }
         }
         failure {
             script {
-                
                 emailext(
-                    subject: "Build Successful: ${currentBuild.fullDisplayName}",
-                    body: "The build has completed successfully. Check the artifacts here: ${env.BUILD_URL}",
+                    subject: "Build Failure: ${currentBuild.fullDisplayName}",
+                    body: "The build failed. Check the artifacts here: ${env.BUILD_URL}",
                     to: getAuthorEmail(),
                 )
             }
