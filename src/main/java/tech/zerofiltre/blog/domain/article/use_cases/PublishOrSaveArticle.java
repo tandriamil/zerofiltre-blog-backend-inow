@@ -50,7 +50,9 @@ public class PublishOrSaveArticle {
 
         if (!isAlreadyPublished(existingArticle) && isTryingToPublish(status) && !currentEditor.isAdmin()) {
             existingArticle.setStatus(Status.IN_REVIEW);
-            UserActionEvent userActionEvent = new UserActionEvent(appUrl, Locale.forLanguageTag(author.getLanguage()), author, "", existingArticle, Action.ARTICLE_SUBMITTED);
+
+            UserActionEvent  userActionEvent = new  UserActionEvent(appUrl, Locale.forLanguageTag(author.getLanguage()), author, "", existingArticle, Action.ARTICLE_SUBMITTED);
+
             notificationProvider.notify(userActionEvent);
         }
 
