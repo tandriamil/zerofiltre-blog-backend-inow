@@ -10,7 +10,7 @@
     </parent>
     <groupId>tech.zerofiltre</groupId>
     <artifactId>blog</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>Zerofiltre blog</name>
     <description>Zerofiltre blog backend</description>
     <properties>
@@ -322,4 +322,16 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>a0mgsrwxsp6lh-artifactory-primary-0-snapshots</name>
+            <url>https://tandriamilanto.jfrog.io/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <name>a0mgsrwxsp6lh-artifactory-primary-0-releases</name>
+            <url>https://tandriamilanto.jfrog.io/artifactory/libs-release</url>
+        </repository>
+    </distributionManagement>
 </project>
