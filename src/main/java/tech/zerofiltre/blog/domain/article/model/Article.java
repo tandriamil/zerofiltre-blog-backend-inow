@@ -2,10 +2,11 @@ package tech.zerofiltre.blog.domain.article.model;
 
 import tech.zerofiltre.blog.domain.user.model.*;
 
+import java.io.Serializable;
 import java.time.*;
 import java.util.*;
 
-public class Article {
+public class Article implements Serializable {
     private long id;
     private String title = "Donnez-moi un titre!";
     private String thumbnail;

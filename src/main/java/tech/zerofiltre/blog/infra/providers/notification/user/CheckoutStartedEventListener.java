@@ -38,7 +38,8 @@ public class CheckoutStartedEventListener implements ApplicationListener<Checkou
                 try {
                     Thread.sleep(checkoutReminderCheckFrequencyMs);
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    log.warn("Thread was interrupted", e);
+                    Thread.currentThread().interrupt();
                 }
             }
 

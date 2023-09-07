@@ -61,9 +61,8 @@ public class ChapterController {
                 .courseProvider(courseProvider)
                 .id(id)
                 .build();
-        User user = null;
         try {
-            user = securityContextManager.getAuthenticatedUser();
+            securityContextManager.getAuthenticatedUser();
         } catch (ZerofiltreException e) {
             log.debug("We did not find a connected user but we can still return the wanted chapter", e);
         }

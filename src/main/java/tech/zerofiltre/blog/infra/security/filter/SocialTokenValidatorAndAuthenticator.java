@@ -19,6 +19,7 @@ import java.util.stream.*;
 @Slf4j
 public class SocialTokenValidatorAndAuthenticator<L extends SocialLoginProvider> {
 
+    private static final String SUCCESS = "success";
     final L socialLoginProvider;
     final UserProvider userProvider;
     private MetricsProvider metricsProvider;
@@ -47,7 +48,7 @@ public class SocialTokenValidatorAndAuthenticator<L extends SocialLoginProvider>
                     if (foundUser.isEmpty()) {
                         userProvider.save(user);
                         counterSpecs.setName(CounterSpecs.ZEROFILTRE_ACCOUNT_CREATIONS);
-                        counterSpecs.setTags("from", user.getLoginFrom().toString(), "success", "true");
+                        counterSpecs.setTags("from", user.getLoginFrom().toString(), SUCCESS, "true");
                         metricsProvider.incrementCounter(counterSpecs);
 
                     } else {
@@ -78,14 +79,14 @@ public class SocialTokenValidatorAndAuthenticator<L extends SocialLoginProvider>
             securityContextManager.getAuthenticatedUser();
         } catch (UserNotFoundException une) {
             counterSpecs.setName(CounterSpecs.ZEROFILTRE_ACCOUNT_CONNECTIONS);
-            counterSpecs.setTags("from", loginFrom, "success", "true");
+            counterSpecs.setTags("from", loginFrom, SUCCESS, "true");
             metricsProvider.incrementCounter(counterSpecs);
         }
 
         if (foundUser.isExpired()) {
 
             counterSpecs.setName(CounterSpecs.ZEROFILTRE_ACCOUNT_CONNECTIONS);
-            counterSpecs.setTags("from", loginFrom, "success", "false");
+            counterSpecs.setTags("from", loginFrom, SUCCESS, "false");
             metricsProvider.incrementCounter(counterSpecs);
 
             throw new UnAuthenticatedActionException(
